@@ -7,7 +7,7 @@ import cmath
 
 FRAME_LENGTH = 1024
 HOP_LENGTH = 512  # 50% Frame Overlap
-
+ 
 ## TODO: Implement overlapping frames, windowing functions ##
 
 # Split Audio into segments of 1024 samples
