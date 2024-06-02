@@ -1,22 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy
-import scipy.io
 import math
 import cmath
 
-FRAME_LENGTH = 1024
-HOP_LENGTH = 512  # 50% Frame Overlap
- 
-## TODO: Implement overlapping frames, windowing functions ##
-
-# Split Audio into segments of 1024 samples
-
-
-def split_audio(audio, frame_length=FRAME_LENGTH):
-    num_wins = audio.shape[0] // frame_length
-    return [audio[i * frame_length:(i + 1) * frame_length]
-            for i in range(num_wins)]
 
 # Naive Discrete Fourier Transform Application
 def dft(audio):
