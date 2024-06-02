@@ -37,11 +37,25 @@ def fft(audio):
         freq_bins[k + half_samples] = even_vector[k] - scaled_odd
     return freq_bins
 
+# Inverse fast fourier transform
+def ifft(freq_bins):
+    num_bins = freq_bins.shape[0]
+    conj = freq_bins[::-1]
+    conj = np.conjugate(freq_bins)
+    signal = fft(conj)
+    signal = np.conjugate(signal)
+    return np.real(signal)
 
 if __name__ == "__main__":
-    sin_vector = np.sin(np.array(range(1024)))
+    sin_vector = np.linspace(0, 25, 1024)
     dft_vector = fft(sin_vector)
     dft_mag = np.abs(dft_vector)
     dft_phase = np.angle(dft_vector)
-    plt.plot(range(dft_vector.shape[0]), dft_phase)
+    fig, axs = plt.subplots(2)
+
+    axs[0].plot(np.array(range(1024)), sin_vector)
+    axs[0].set_title("og signal")
+    axs[1].plot(np.array(range(1024)), ifft(dft_vector))
+    axs[1].set_title("recovered")
+
     plt.show()
